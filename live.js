@@ -12,8 +12,8 @@ function matrix(rows, cols, defaultValue) {
 
     return arr;
 }
-let maxx = 300;
-let maxy = 300;
+let maxx = 400;
+let maxy = 400;
 let scc = 2;
 
 
