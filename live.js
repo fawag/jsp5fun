@@ -11,9 +11,9 @@ function matrix(rows, cols, defaultValue) {
 
     return arr;
 }
-let maxx = 300;
-let maxy = 300;
-let scc = 3;
+let maxx = 600;
+let maxy = 600;
+let scc = 1;
 
 
 let world = matrix(maxx, maxy, 0);
@@ -59,20 +59,22 @@ function count(x, y, r) {
 
 
 function drawIt(x, y) {
-    fill(0); stroke(0);
-    let px = x * scc;
-    let py = y * scc;
-    rect(px, py, scc, scc)
+
+    point(x, y);
+    // let px = x * scc;
+    // let py = y * scc;
+    // rect(px, py, scc, scc)
 }
 let world2 = matrix(maxx, maxy, 0);
 
 function drawWorld() {
+    fill(0); stroke(0);
     for (let x = 0; x < maxx; x++)
         for (let y = 0; y < maxy; y++) {
             if (world2[x][y] != 0) {
                 drawIt(x, y);
             }
-
+            world[x][y] = world2[x][y];
         }
 }
 
@@ -97,34 +99,30 @@ function survive(r, x, y, low, high) {
 
 
 let time = 0;
+let c = 0;
+
 function draw() {
+    c++;
     time++;
-    if (time < 1) return;
+    //if (time < 10) return;
     time = 0;
-    fill(255); stroke(255);
+    //fill(255); stroke(255);
     background(200);
     translate(0, 0);
-
     world2 = matrix(maxx, maxy, 0);
+
     for (let x = 1; x < maxx - 1; x++)
         for (let y = 1; y < maxy - 1; y++) {
-
-
             //if (born(1, x, y, 3, 3) == 1) world2[x][y] = 1;
             //if (survive(1, x, y, 2, 3) == 1) world2[x][y] = 1;
-
             if (born(5, x, y, 34, 45) == 1) world2[x][y] = 1;
             if (survive(5, x, y, 33, 57) == 1) world2[x][y] = 1;
-
-
         }
 
     drawWorld();
-    for (let x = 1; x < maxx - 1; x++)
-        for (let y = 1; y < maxy - 1; y++) {
-            world[x][y] = world2[x][y];
+    textSize(22);
+    text(c, 10, 30);
 
-        }
 
 
 
