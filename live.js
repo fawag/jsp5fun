@@ -14,7 +14,7 @@ function matrix(rows, cols, defaultValue) {
 }
 let maxx = 400;
 let maxy = 400;
-let scc = 2;
+let scc = 1;
 
 
 let world = matrix(maxx, maxy, 0);
